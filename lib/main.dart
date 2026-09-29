@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'core/DI/di.dart';
 import 'core/resources/route_generator.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 

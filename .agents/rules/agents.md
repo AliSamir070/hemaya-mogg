@@ -1,3 +1,19 @@
+# Project Overview
+
+**Hemaya** is an IoT monitoring and control app that integrates with the **eWeLink** platform to interact with **Sonoff AirGuard TH** — an indoor smart Zigbee temperature and humidity sensor.
+
+### Core Capabilities
+
+- **Sensor Reads**: Fetch temperature and humidity data from the Sonoff AirGuard TH sensor, supporting both **one-time** (on-demand) and **real-time** (continuous/streaming) read modes.
+- **Camera Screenshots**: Capture and display screenshots from a connected camera.
+- **Threshold Control**: Configure and adjust sensor threshold values (e.g., temperature/humidity limits) to define alert or automation boundaries.
+
+### Integration
+
+- **eWeLink API**: The app communicates with eWeLink cloud services to authenticate, discover devices, read sensor data, and send control commands to the Sonoff AirGuard TH device.
+
+---
+
 # Architecture: Clean Architecture (Feature-First)
 
 ## Folder Structure
