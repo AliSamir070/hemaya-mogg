@@ -7,8 +7,8 @@ abstract final class HomeDummyData {
   static const List<DeviceUiModel> devices = [
     DeviceUiModel(
       id: 'airguard-th',
-      name: 'SONOFF AirGuard TH',
-      description: 'Temp & Humidity Sensor · Zigbee',
+      name: 'Sensor',
+      description: 'Temp & Humidity Sensor',
       category: DeviceCategory.sensor,
       actionHint: 'Tap to view live dashboard',
       metrics: [

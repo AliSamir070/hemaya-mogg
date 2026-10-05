@@ -9,9 +9,10 @@ import '../widgets/common/gradient_button.dart';
 import '../widgets/common/home_texts.dart';
 import '../widgets/delegate/delegate_user_tile.dart';
 import '../widgets/delegate/delegation_date_field.dart';
+import '../widgets/delegate/delegation_date_picker_sheet.dart';
 import '../widgets/delegate/delegation_summary_card.dart';
 
-/// Figma: "00b · eWeLink Home — Delegate Tab".
+/// Figma: "00b · eWeLink Home — Delegate Tab" & "00c · Date Picker".
 ///
 /// Lets the user pick a person and a period to delegate their alerts to.
 class DelegateTab extends StatefulWidget {
@@ -58,7 +59,10 @@ class _DelegateTabState extends State<DelegateTab> {
 
   Future<void> _pickFromDate() async {
     final today = DateUtils.dateOnly(DateTime.now());
-    final picked = await _showPicker(
+    final picked = await DelegationDatePickerSheet.show(
+      context: context,
+      title: StringsManager.selectFromDate,
+      subtitle: StringsManager.delegationBeginHint,
       initialDate: _from,
       firstDate: today,
       lastDate: today.add(_maxPeriodAhead),
@@ -71,40 +75,16 @@ class _DelegateTabState extends State<DelegateTab> {
   }
 
   Future<void> _pickToDate() async {
-    final picked = await _showPicker(
+    final picked = await DelegationDatePickerSheet.show(
+      context: context,
+      title: StringsManager.selectToDate,
+      subtitle: StringsManager.delegationEndHint,
       initialDate: _to,
       firstDate: _from,
       lastDate: _from.add(_maxPeriodAhead),
     );
     if (picked == null || !mounted) return;
     setState(() => _to = picked);
-  }
-
-  Future<DateTime?> _showPicker({
-    required DateTime initialDate,
-    required DateTime firstDate,
-    required DateTime lastDate,
-  }) {
-    return showDatePicker(
-      context: context,
-      initialDate: initialDate,
-      firstDate: firstDate,
-      lastDate: lastDate,
-      builder: (context, child) => Theme(
-        data: ThemeData.dark().copyWith(
-          colorScheme: const ColorScheme.dark(
-            primary: ColorManager.sky,
-            onPrimary: ColorManager.ink,
-            surface: ColorManager.surface,
-            onSurface: ColorManager.pureWhite,
-          ),
-          dialogTheme: const DialogThemeData(
-            backgroundColor: ColorManager.surface,
-          ),
-        ),
-        child: child!,
-      ),
-    );
   }
 
   String _summary(DelegateUserUiModel? user) {

@@ -21,6 +21,14 @@ abstract class StringsManager {
   static const String choosePersonHint =
       'Choose a person to receive your sensor and motion alerts.';
 
+  static const String selectFromDate = 'Select From Date';
+  static const String selectToDate = 'Select To Date';
+  static const String delegationBeginHint =
+      'Choose when the delegation should begin';
+  static const String delegationEndHint =
+      'Choose when the delegation should end';
+  static const String confirmDate = 'Confirm Date';
+
   static String delegationSummary(String name, String from, String to) =>
       '$name will receive your sensor and motion alerts from $from to $to.';
 
