@@ -24,7 +24,7 @@ class DelegateTab extends StatefulWidget {
 
   final List<DelegateUserUiModel> users;
   final void Function(DelegateUserUiModel user, DateTimeRange period)
-      onActivateDelegation;
+  onActivateDelegation;
 
   @override
   State<DelegateTab> createState() => _DelegateTabState();
@@ -187,9 +187,9 @@ class _DelegateTabState extends State<DelegateTab> {
                       onPressed: selectedUser == null
                           ? null
                           : () => widget.onActivateDelegation(
-                                selectedUser,
-                                DateTimeRange(start: _from, end: _to),
-                              ),
+                              selectedUser,
+                              DateTimeRange(start: _from, end: _to),
+                            ),
                     ),
                   ],
                 ),

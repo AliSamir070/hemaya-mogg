@@ -111,9 +111,7 @@ class _InitialsAvatar extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: LinearGradient(
-          colors: [color, color.withValues(alpha: 0.6)],
-        ),
+        gradient: LinearGradient(colors: [color, color.withValues(alpha: 0.6)]),
       ),
       child: Text(
         initials,

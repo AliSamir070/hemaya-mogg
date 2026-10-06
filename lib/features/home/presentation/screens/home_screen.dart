@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
+import '../../../../core/routes_manager/routes.dart';
+import '../../../sensor_details/presentation/models/sensor_details_ui_model.dart';
 import '../models/delegate_user_ui_model.dart';
 import '../models/device_ui_model.dart';
 import '../models/home_dummy_data.dart';
@@ -28,7 +30,19 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onDeviceTap(DeviceUiModel device) {
-    // TODO: navigate to the device dashboard / camera snapshot screen.
+    switch (device.category) {
+      case DeviceCategory.sensor:
+        Navigator.of(context).pushNamed(
+          Routes.sensorDetailsRoute,
+          arguments: SensorDetailsArgs(
+            deviceId: device.id,
+            deviceName: device.name,
+          ),
+        );
+      case DeviceCategory.camera:
+        // TODO: navigate to the camera snapshot screen.
+        break;
+    }
   }
 
   void _onActivateDelegation(DelegateUserUiModel user, DateTimeRange period) {
@@ -88,10 +102,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // Existing eWeLink sample — to be moved to the data layer.
-  connect()async{
-    var ewelink = Ewelink(email: '<your ewelink email>',
+  connect() async {
+    var ewelink = Ewelink(
+      email: '<your ewelink email>',
       password: '<your ewelink password>',
-      region: '<your ewelink region>',);
+      region: '<your ewelink region>',
+    );
     await ewelink.getCredentials();
     var device = await ewelink.getDevice(deviceId: "");
     List<EwelinkDevice> devices = await ewelink.getDevices();

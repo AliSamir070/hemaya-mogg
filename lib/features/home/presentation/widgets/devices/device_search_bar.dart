@@ -33,9 +33,9 @@ class _DeviceSearchBarState extends State<DeviceSearchBar> {
     final radius = BorderRadius.circular(24.r);
 
     OutlineInputBorder border(Color color) => OutlineInputBorder(
-          borderRadius: radius,
-          borderSide: BorderSide(color: color),
-        );
+      borderRadius: radius,
+      borderSide: BorderSide(color: color),
+    );
 
     return TextField(
       controller: _controller,
@@ -66,8 +66,9 @@ class _DeviceSearchBarState extends State<DeviceSearchBar> {
               ? const SizedBox.shrink()
               : IconButton(
                   onPressed: _clear,
-                  tooltip: MaterialLocalizations.of(context)
-                      .deleteButtonTooltip,
+                  tooltip: MaterialLocalizations.of(
+                    context,
+                  ).deleteButtonTooltip,
                   icon: Icon(
                     Icons.close_rounded,
                     size: 18.r,

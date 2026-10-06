@@ -127,8 +127,8 @@ class _DevicesGrid extends StatelessWidget {
     }
 
     // Wide windows: intrinsic-height cards laid out in N columns.
-    final itemWidth =
-        ((contentWidth - spacing * (columns - 1)) / columns).floorToDouble();
+    final itemWidth = ((contentWidth - spacing * (columns - 1)) / columns)
+        .floorToDouble();
     return SliverToBoxAdapter(
       child: Wrap(
         spacing: spacing,
@@ -142,10 +142,10 @@ class _DevicesGrid extends StatelessWidget {
   }
 
   Widget _buildCard(DeviceUiModel device) => DeviceCard(
-        key: ValueKey(device.id),
-        device: device,
-        onTap: () => onDeviceTap(device),
-      );
+    key: ValueKey(device.id),
+    device: device,
+    onTap: () => onDeviceTap(device),
+  );
 }
 
 class _EmptyDevices extends StatelessWidget {

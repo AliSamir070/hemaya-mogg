@@ -51,8 +51,7 @@ class DelegationDatePickerSheet extends StatefulWidget {
       _DelegationDatePickerSheetState();
 }
 
-class _DelegationDatePickerSheetState
-    extends State<DelegationDatePickerSheet> {
+class _DelegationDatePickerSheetState extends State<DelegationDatePickerSheet> {
   late DateTime _selectedDate;
   late DateTime _displayedMonth;
 
@@ -94,8 +93,10 @@ class _DelegationDatePickerSheetState
   void _previousMonth() {
     if (_canGoToPreviousMonth) {
       setState(() {
-        _displayedMonth =
-            DateTime(_displayedMonth.year, _displayedMonth.month - 1);
+        _displayedMonth = DateTime(
+          _displayedMonth.year,
+          _displayedMonth.month - 1,
+        );
       });
     }
   }
@@ -103,8 +104,10 @@ class _DelegationDatePickerSheetState
   void _nextMonth() {
     if (_canGoToNextMonth) {
       setState(() {
-        _displayedMonth =
-            DateTime(_displayedMonth.year, _displayedMonth.month + 1);
+        _displayedMonth = DateTime(
+          _displayedMonth.year,
+          _displayedMonth.month + 1,
+        );
       });
     }
   }
@@ -123,10 +126,15 @@ class _DelegationDatePickerSheetState
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.paddingOf(context).bottom;
-    final daysInMonth =
-        DateUtils.getDaysInMonth(_displayedMonth.year, _displayedMonth.month);
-    final firstDayOfMonth =
-        DateTime(_displayedMonth.year, _displayedMonth.month, 1);
+    final daysInMonth = DateUtils.getDaysInMonth(
+      _displayedMonth.year,
+      _displayedMonth.month,
+    );
+    final firstDayOfMonth = DateTime(
+      _displayedMonth.year,
+      _displayedMonth.month,
+      1,
+    );
     // DateTime.weekday: Mon=1..Sun=7 -> map to Sun=0..Sat=6
     final startingWeekday = firstDayOfMonth.weekday % 7;
     final totalGridItems = startingWeekday + daysInMonth;
@@ -142,12 +150,7 @@ class _DelegationDatePickerSheetState
       child: SafeArea(
         top: false,
         child: Padding(
-          padding: EdgeInsets.fromLTRB(
-            24.r,
-            12.r,
-            24.r,
-            bottomInset + 16.r,
-          ),
+          padding: EdgeInsets.fromLTRB(24.r, 12.r, 24.r, bottomInset + 16.r),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -177,10 +180,7 @@ class _DelegationDatePickerSheetState
               SizedBox(height: 4.r),
               Text(
                 widget.subtitle,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: ColorManager.slate,
-                ),
+                style: TextStyle(fontSize: 12.sp, color: ColorManager.slate),
               ),
               SizedBox(height: 20.r),
 
@@ -288,8 +288,8 @@ class _DelegationDatePickerSheetState
                           color: isSelected
                               ? ColorManager.ink
                               : isSelectable
-                                  ? ColorManager.pureWhite
-                                  : ColorManager.slate.withValues(alpha: 0.3),
+                              ? ColorManager.pureWhite
+                              : ColorManager.slate.withValues(alpha: 0.3),
                         ),
                       ),
                     ),

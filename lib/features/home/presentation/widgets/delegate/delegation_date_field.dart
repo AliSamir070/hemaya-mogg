@@ -18,7 +18,9 @@ class DelegationDateField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formattedDate = MaterialLocalizations.of(context).formatShortDate(date);
+    final formattedDate = MaterialLocalizations.of(
+      context,
+    ).formatShortDate(date);
     final radius = BorderRadius.circular(16.r);
 
     return Semantics(
@@ -49,7 +51,10 @@ class DelegationDateField extends StatelessWidget {
               child: ConstrainedBox(
                 constraints: BoxConstraints(minHeight: 50.r),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 14.r, vertical: 8.r),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 14.r,
+                    vertical: 8.r,
+                  ),
                   child: Row(
                     children: [
                       Icon(

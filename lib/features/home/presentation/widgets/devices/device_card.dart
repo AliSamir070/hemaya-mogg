@@ -20,7 +20,8 @@ class DeviceCard extends StatelessWidget {
 
     return Semantics(
       button: true,
-      label: '${device.name}, '
+      label:
+          '${device.name}, '
           '${device.isOnline ? StringsManager.online : StringsManager.offline}',
       hint: device.actionHint,
       excludeSemantics: true,
@@ -45,7 +46,12 @@ class DeviceCard extends StatelessWidget {
             child: Stack(
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.r, 18.r, 18.r, 8.r),
+                  padding: EdgeInsetsDirectional.fromSTEB(
+                    16.r,
+                    18.r,
+                    18.r,
+                    8.r,
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,

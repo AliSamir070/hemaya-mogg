@@ -1,3 +1,1 @@
-abstract final class AssetsManager {
-
-}
+abstract final class AssetsManager {}

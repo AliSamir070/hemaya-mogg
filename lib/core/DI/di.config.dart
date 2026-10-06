@@ -14,6 +14,8 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/sensor_details/presentation/viewmodels/sensor_details/sensor_details_view_model_cubit.dart'
+    as _i762;
 import 'client_module.dart' as _i728;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -24,6 +26,9 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final clientModule = _$ClientModule();
+    gh.factory<_i762.SensorDetailsViewModelCubit>(
+      () => _i762.SensorDetailsViewModelCubit(),
+    );
     gh.singleton<_i361.Dio>(() => clientModule.buildDio());
     return this;
   }

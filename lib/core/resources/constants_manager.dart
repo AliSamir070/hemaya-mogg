@@ -1,3 +1,1 @@
-abstract final class AppConstants {
-
-}
+abstract final class AppConstants {}

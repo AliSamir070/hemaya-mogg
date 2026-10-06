@@ -5,14 +5,12 @@ abstract class ColorManager {
   static Color appBarTitleColor = const Color(0xFF06004F);
   static Color primaryDark = const Color(0xFF06004F);
 
-
-
   static Color darkGrey = const Color(0xff525252);
   static Color grey = const Color(0xff737477);
   static Color lightGrey = const Color(0xff9E9E9E);
   static Color black = const Color(0xff000000);
   static Color containerGray = const Color(0xffDBE4ED);
-  static Color transparent =  Colors.transparent;
+  static Color transparent = Colors.transparent;
 
   static const Color starRateColor = Color(0XFFFDD835);
   static const Color textColor = Color(0xff06004F);
@@ -42,5 +40,4 @@ abstract class ColorManager {
   static const LinearGradient primaryGradient = LinearGradient(
     colors: [sky, indigo],
   );
-
 }
