@@ -6,6 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/DI/di.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
+import '../../../../core/routes_manager/routes.dart';
+import '../../../sensor_alarm_events/presentation/models/sensor_alarm_ui_model.dart';
+import '../../../sensor_thresholds/presentation/models/sensor_thresholds_ui_model.dart';
 import '../models/sensor_details_ui_model.dart';
 import '../utils/sensor_details_layout.dart';
 import '../utils/sensor_status_style.dart';
@@ -86,19 +89,6 @@ class _SensorDetailsViewState extends State<_SensorDetailsView>
     super.dispose();
   }
 
-  void _showComingSoon(String feature) {
-    // TODO: navigate to alarm events / thresholds screens once available.
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: ColorManager.surfaceLight,
-          content: Text('$feature · ${StringsManager.comingSoon}'),
-        ),
-      );
-  }
-
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -162,8 +152,26 @@ class _SensorDetailsViewState extends State<_SensorDetailsView>
           sensor: sensor,
           onThresholdAlertsChanged: cubit.setThresholdAlerts,
           onBack: () => Navigator.of(context).maybePop(),
-          onAlarmEvents: () => _showComingSoon(StringsManager.alarmEvents),
-          onSetThresholds: () => _showComingSoon(StringsManager.setThresholds),
+          onAlarmEvents: () {
+            Navigator.of(context).pushNamed(
+              Routes.sensorAlarmEventsRoute,
+              arguments: SensorAlarmEventsArgs(
+                deviceId: sensor.id,
+                deviceName: sensor.name,
+              ),
+            );
+          },
+          onSetThresholds: () {
+            Navigator.of(context).pushNamed(
+              Routes.sensorThresholdsRoute,
+              arguments: SensorThresholdsArgs(
+                deviceId: sensor.id,
+                deviceName: sensor.name,
+                currentTemperature: sensor.temperature,
+                currentHumidity: sensor.humidity,
+              ),
+            );
+          },
         );
 
         final children = size == SensorLayoutSize.expanded

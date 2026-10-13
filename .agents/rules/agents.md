@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # Project Overview
 
 **Hemaya** is an IoT monitoring and control app that integrates with the **eWeLink** platform to interact with **Sonoff AirGuard TH** — an indoor smart Zigbee temperature and humidity sensor.

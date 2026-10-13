@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/routes_manager/routes.dart';
+import '../../../camera_snapshot/presentation/models/camera_snapshot_ui_model.dart';
 import '../../../sensor_details/presentation/models/sensor_details_ui_model.dart';
 import '../models/delegate_user_ui_model.dart';
 import '../models/device_ui_model.dart';
@@ -40,8 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         );
       case DeviceCategory.camera:
-        // TODO: navigate to the camera snapshot screen.
-        break;
+        Navigator.of(context).pushNamed(
+          Routes.cameraSnapshotRoute,
+          arguments: CameraSnapshotArgs(
+            deviceId: device.id,
+            deviceName: device.name,
+          ),
+        );
     }
   }
 
