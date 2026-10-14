@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "170994342564",
+    "project_id": "hemaya-mogg",
+    "storage_bucket": "hemaya-mogg.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170994342564:android:57ce7aa4004e7386fea431",
+        "android_client_info": {
+          "package_name": "com.example.hemaya_mogg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ZMzLZojF3b3LPAh0jm72298PhCfkalw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
