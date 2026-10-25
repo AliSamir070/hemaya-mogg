@@ -1,4 +1,24 @@
 abstract class StringsManager {
+  static const String welcomeBack = 'Welcome Back';
+  static const String loginSubtitle =
+      'Log in to your hemaya account to continue monitoring';
+  static const String email = 'Email';
+  static const String emailPlaceholder = 'you@example.com';
+  static const String password = 'Password';
+  static const String passwordPlaceholder = 'Enter your password';
+  static const String login = 'Log In';
+  static const String dontHaveAccount = 'Don\'t have an account? ';
+  static const String signUp = 'Sign Up';
+
+  // Sign up strings
+  static const String createAccount = 'Create Account';
+  static const String createAccountSubtitle = 'Set up your hemaya account to start monitoring';
+  static const String fullName = 'Full Name';
+  static const String fullNamePlaceholder = 'Enter your name';
+  static const String createPasswordPlaceholder = 'Create a password';
+  static const String confirmPassword = 'Confirm Password';
+  static const String confirmPasswordPlaceholder = 'Re-enter your password';
+  static const String alreadyHaveAccount = 'Already have an account? ';
   // Home tabs
   static const String devicesTab = 'Devices';
   static const String delegateTab = 'Delegate';
@@ -126,4 +146,3 @@ abstract class StringsManager {
   static const String person = 'Person';
   static const String motion = 'Motion';
 }
-

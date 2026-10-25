@@ -1,4 +1,5 @@
 class Routes {
+  static const String loginRoute = "/login";
   static const String homeRoute = "/home";
   static const String sensorDetailsRoute = "/sensor-details";
   static const String cameraSnapshotRoute = "/camera-snapshot";
@@ -7,4 +8,5 @@ class Routes {
   static const String sensorThresholdsRoute = "/sensor-thresholds";
   static const String sensorActiveAlarmRoute = "/sensor-active-alarm";
   static const String cameraActiveAlarmRoute = "/camera-active-alarm";
+  static const String signupRoute = "/signup";
 }

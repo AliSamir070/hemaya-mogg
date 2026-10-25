@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hemaya_mogg/core/routes_manager/routes.dart';
+
+import '../../features/auth/presentation/screens/login_screen.dart';
+import '../../features/auth/presentation/screens/signup_screen.dart';
 import '../../features/camera_event_history/presentation/models/camera_active_alarm_ui_model.dart';
 import '../../features/camera_event_history/presentation/models/camera_event_ui_model.dart';
 import '../../features/camera_event_history/presentation/screens/camera_active_alarm_screen.dart';
@@ -19,6 +22,10 @@ import '../../features/sensor_thresholds/presentation/screens/sensor_thresholds_
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.loginRoute:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case Routes.signupRoute:
+        return MaterialPageRoute(builder: (_) => const SignupScreen());
       case Routes.homeRoute:
         {
           return MaterialPageRoute(builder: (_) => const HomeScreen());

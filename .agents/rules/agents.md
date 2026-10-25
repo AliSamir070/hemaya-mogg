@@ -188,3 +188,9 @@ lib/
 - **Any reusable widget or widget found in listview and gridview itembuilder should be implemented in separate reusable component widget**
 - **Don't create new viewmodel, use view model already created if there is a viewmodel. To handle states for every api logic separated from each other use blocbuilder buildWhen.**
 - **Never create duplicate data models (DTOs) or domain entities if identical models/entities already exist in other features (e.g. CategoryDto, BrandDto, CategoryEntity, BrandEntity). Always reuse existing models and entities across features.**
+
+- Background color and design should match the Figma login screen.
+- Icons in the login screen must match the Figma design (download and use as assets).
+- Ensure strings are translated to English as per the Figma design.
+
+- Always add SVG icon paths as static const variables in the assets manager (e.g., SvgAssets) and use them in widget code instead of using static string paths.

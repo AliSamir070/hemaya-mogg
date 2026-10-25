@@ -25,6 +25,19 @@ abstract class ColorManager {
   static Color white = const Color(0xffFFFFFF);
   static Color error = const Color(0xffe61f34); // red color
 
+  // Login UI colors based on Figma design
+  static Color backgroundDark = const Color(0xFF080D1A);
+  static Color inputFieldBackground = const Color(0xFF121A2E);
+  static Color inputFieldBorder = const Color(
+    0x14FFFFFF,
+  ); // rgba(255,255,255,0.08) -> 0.08 * 255 = 20.4 -> ~14 hex
+  static Color buttonColor = const Color(
+    0xFF38BDF8,
+  ); // We'll use this for single color, or gradient in the UI
+  static Color buttonColorSecondary = const Color(0xFF818CF8); // Gradient end
+  static Color buttonTextColor = const Color(0xFF06101F);
+  static Color hintColor = const Color(0xFF8A96B2);
+  static Color inputIconOrange = const Color(0xFFFF8A4C);
   // Home (dark) design tokens — extracted from Figma "eWeLink Home" frames
   static const Color homeBackground = Color(0xFF080D1A);
   static const Color surface = Color(0xFF121A2E);
