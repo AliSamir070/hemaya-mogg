@@ -1,4 +1,3 @@
-import 'package:dart_ewelink_api/dart_ewelink_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -105,18 +104,5 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
-  }
-
-  // Existing eWeLink sample — to be moved to the data layer.
-  connect() async {
-    var ewelink = Ewelink(
-      email: '<your ewelink email>',
-      password: '<your ewelink password>',
-      region: '<your ewelink region>',
-    );
-    await ewelink.getCredentials();
-    var device = await ewelink.getDevice(deviceId: "");
-    List<EwelinkDevice> devices = await ewelink.getDevices();
-    await ewelink.toggleDevice(deviceId: devices.first.deviceid);
   }
 }

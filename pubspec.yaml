@@ -38,7 +38,6 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   connectivity_plus: ^7.3.1
   fluttertoast: ^9.1.0
-  dart_ewelink_api: ^0.0.6
   injectable:
   # add get_it
   get_it:
@@ -48,6 +47,7 @@ dependencies:
   flutter_svg: ^2.0.9
   flutter_bloc: ^9.1.1
   firebase_core: ^4.15.0
+  dart_meteor: ^4.1.0
 
 dev_dependencies:
   flutter_test:

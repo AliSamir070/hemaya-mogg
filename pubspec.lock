@@ -185,14 +185,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.9"
-  dart_ewelink_api:
+  dart_meteor:
     dependency: "direct main"
     description:
-      name: dart_ewelink_api
-      sha256: "2d91d8ff3a915fbd98350a7fa330b7dd586ecc316b6875c4218a9ec85851b5c9"
+      name: dart_meteor
+      sha256: "3bbc59837f871f6fad21a41f3b65dfae242fef8ca7c78fe36f71e34d376d9383"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.6"
+    version: "4.1.0"
   dart_style:
     dependency: transitive
     description:
@@ -376,14 +376,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.4.0"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.13.6"
   http_multi_server:
     dependency: transitive
     description:
@@ -544,14 +536,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.0"
-  nonce:
-    dependency: transitive
-    description:
-      name: nonce
-      sha256: bd279f698c9f641a64375a17040bd899061e46bdb9aa65bf846838bd3b8b437f
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.0"
   package_config:
     dependency: transitive
     description:
@@ -664,6 +648,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "10.2.9"
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      sha256: "5c3004a4a8dbb94bd4bf5412a4def4acdaa12e12f269737a5751369e12d1a962"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.28.0"
   shelf:
     dependency: transitive
     description:

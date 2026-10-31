@@ -13,12 +13,19 @@ abstract class StringsManager {
   // Sign up strings
   static const String createAccount = 'Create Account';
   static const String createAccountSubtitle = 'Set up your hemaya account to start monitoring';
+  static const String userName = 'Username';
+  static const String userNamePlaceholder = 'Enter your username';
   static const String fullName = 'Full Name';
-  static const String fullNamePlaceholder = 'Enter your name';
+  static const String fullNamePlaceholder = 'Enter your full name';
+  static const String phone = 'Phone';
+  static const String phonePlaceholder = '01020304050';
   static const String createPasswordPlaceholder = 'Create a password';
   static const String confirmPassword = 'Confirm Password';
   static const String confirmPasswordPlaceholder = 'Re-enter your password';
   static const String alreadyHaveAccount = 'Already have an account? ';
+  static const String signupSuccessToast = 'Account created successfully';
+  static const String ok = 'Ok';
+  static const String noInternetConnection = 'No Internet Connection';
   // Home tabs
   static const String devicesTab = 'Devices';
   static const String delegateTab = 'Delegate';
