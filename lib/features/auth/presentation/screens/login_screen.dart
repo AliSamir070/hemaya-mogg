@@ -161,7 +161,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: 40.h),
-                     CustomElevatedButton(text: StringsManager.login,onpressed:(){}),
+                     CustomElevatedButton(text: StringsManager.login,onpressed:(){
+                       Navigator.pushReplacementNamed(context, Routes.homeRoute);
+                     }),
                       SizedBox(height: 120.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
