@@ -24,6 +24,7 @@ abstract class StringsManager {
   static const String confirmPasswordPlaceholder = 'Re-enter your password';
   static const String alreadyHaveAccount = 'Already have an account? ';
   static const String signupSuccessToast = 'Account created successfully';
+  static const String loginSuccessToast = 'Logged in successfully';
   static const String ok = 'Ok';
   static const String noInternetConnection = 'No Internet Connection';
   // Home tabs

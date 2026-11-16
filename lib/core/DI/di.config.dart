@@ -21,7 +21,10 @@ import '../../features/auth/data/datasource_impl/auth_api_dao_impl.dart'
     as _i793;
 import '../../features/auth/data/repo_impl/auth_repo_impl.dart' as _i279;
 import '../../features/auth/domain/repo/auth_repo.dart' as _i170;
+import '../../features/auth/domain/usecase/login_use_case.dart' as _i391;
 import '../../features/auth/domain/usecase/signup_use_case.dart' as _i164;
+import '../../features/auth/presentation/viewmodels/login/login_view_model_cubit.dart'
+    as _i408;
 import '../../features/auth/presentation/viewmodels/signup/signup_view_model_cubit.dart'
     as _i836;
 import '../../features/camera_event_history/presentation/viewmodels/camera_active_alarm/camera_active_alarm_view_model_cubit.dart'
@@ -86,11 +89,17 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i170.AuthRepo>(() => _i279.AuthRepoImpl(gh<_i753.AuthDao>()));
+    gh.singleton<_i391.LoginUseCase>(
+      () => _i391.LoginUseCase(gh<_i170.AuthRepo>()),
+    );
     gh.singleton<_i164.SignupUseCase>(
       () => _i164.SignupUseCase(gh<_i170.AuthRepo>()),
     );
     gh.factory<_i836.SignupViewModelCubit>(
       () => _i836.SignupViewModelCubit(gh<_i164.SignupUseCase>()),
+    );
+    gh.factory<_i408.LoginViewModelCubit>(
+      () => _i408.LoginViewModelCubit(gh<_i391.LoginUseCase>()),
     );
     return this;
   }

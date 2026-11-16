@@ -19,7 +19,7 @@ abstract final class HomeDummyData {
     DeviceUiModel(
       id: 'front-door-camera',
       name: 'Front Door Camera',
-      description: 'eWeLink Smart Camera · Wi-Fi',
+      description: 'Smart Camera · Wi-Fi',
       category: DeviceCategory.camera,
       actionHint: 'Tap to view last snapshot',
       metrics: [

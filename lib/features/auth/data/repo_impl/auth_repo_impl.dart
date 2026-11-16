@@ -42,4 +42,27 @@ class AuthRepoImpl implements AuthRepo {
         return Error(errorMessage);
     }
   }
+
+  @override
+  Future<ApiResult<AuthEntity>> login({
+    required String email,
+    required String password,
+  }) async {
+    final bool isConnected = await InternetChecker.checkConnection();
+    if (!isConnected) {
+      return Error('No Internet Connection');
+    }
+
+    final result = await _authDao.login(
+      email: email,
+      password: password,
+    );
+
+    switch (result) {
+      case Success(response: final authResponse):
+        return Success(authResponse.toEntity());
+      case Error(message: final errorMessage):
+        return Error(errorMessage);
+    }
+  }
 }

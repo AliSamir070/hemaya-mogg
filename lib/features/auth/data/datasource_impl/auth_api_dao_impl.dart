@@ -27,4 +27,20 @@ class AuthApiDaoImpl implements AuthDao {
       return Error(_meteorService.formatError(e));
     }
   }
+
+  @override
+  Future<ApiResult<AuthResponse>> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final response = await _authClient.login(email, password);
+      if (response.statusMsg != null) {
+        return Error(response.message ?? response.statusMsg!);
+      }
+      return Success(response);
+    } catch (e) {
+      return Error(_meteorService.formatError(e));
+    }
+  }
 }

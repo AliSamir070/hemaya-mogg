@@ -31,4 +31,17 @@ class AuthClient {
     );
     return AuthResponse.fromMeteorResult(result, requestBody: body);
   }
+
+  /// Authenticates a user using Meteor's built-in accounts login (`loginWithPassword`).
+  Future<AuthResponse> login(String email, String password) async {
+    final loginResult = await _meteorService.loginWithPassword(
+      email,
+      password,
+    );
+    return AuthResponse(
+      id: loginResult.userId,
+      email: email,
+      token: loginResult.token,
+    );
+  }
 }

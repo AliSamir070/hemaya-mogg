@@ -9,4 +9,9 @@ abstract interface class AuthRepo {
     required String email,
     required String password,
   });
+
+  Future<ApiResult<AuthEntity>> login({
+    required String email,
+    required String password,
+  });
 }
