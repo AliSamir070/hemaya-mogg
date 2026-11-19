@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../models/sensor_alarm_events_dummy_data.dart';
+import '../../../../../core/resources/api_result.dart';
+import '../../../domain/usecase/get_sensor_alarm_events_use_case.dart';
 import '../../models/sensor_alarm_ui_model.dart';
 
 part 'sensor_alarm_events_view_model_state.dart';
@@ -9,28 +10,45 @@ part 'sensor_alarm_events_view_model_state.dart';
 @injectable
 class SensorAlarmEventsViewModelCubit
     extends Cubit<SensorAlarmEventsViewModelState> {
-  SensorAlarmEventsViewModelCubit()
+  final GetSensorAlarmEventsUseCase _getSensorAlarmEventsUseCase;
+
+  SensorAlarmEventsViewModelCubit(this._getSensorAlarmEventsUseCase)
       : super(const SensorAlarmEventsInitial());
 
   List<SensorAlarmItemUiModel> _events = [];
   SensorAlarmFilter _filter = SensorAlarmFilter.all;
+  String _currentDeviceId = '';
 
   Future<void> loadEvents({
     required String deviceId,
     required String deviceName,
   }) async {
+    _currentDeviceId = deviceId;
     emit(const SensorAlarmEventsLoading());
-    await Future<void>.delayed(const Duration(milliseconds: 700));
+
+    final params = <String, dynamic>{};
+    if (deviceId.isNotEmpty) {
+      params['deviceId'] = deviceId;
+    }
+
+    final result = await _getSensorAlarmEventsUseCase(params: params);
     if (isClosed) return;
 
-    _events = SensorAlarmEventsDummyData.events();
-    _filter = SensorAlarmFilter.all;
-    emit(
-      SensorAlarmEventsSuccess(
-        events: List.unmodifiable(_events),
-        filter: _filter,
-      ),
-    );
+    switch (result) {
+      case Success(response: final entities):
+        _events = entities
+            .map((entity) => SensorAlarmItemUiModel.fromEntity(entity))
+            .toList();
+        _filter = SensorAlarmFilter.all;
+        emit(
+          SensorAlarmEventsSuccess(
+            events: List.unmodifiable(_events),
+            filter: _filter,
+          ),
+        );
+      case Error(message: final errorMessage):
+        emit(SensorAlarmEventsError(errorMessage));
+    }
   }
 
   void setFilter(SensorAlarmFilter filter) {
@@ -63,14 +81,27 @@ class SensorAlarmEventsViewModelCubit
   }
 
   Future<void> refresh() async {
-    await Future<void>.delayed(const Duration(milliseconds: 600));
+    final params = <String, dynamic>{};
+    if (_currentDeviceId.isNotEmpty) {
+      params['deviceId'] = _currentDeviceId;
+    }
+
+    final result = await _getSensorAlarmEventsUseCase(params: params);
     if (isClosed) return;
-    _events = SensorAlarmEventsDummyData.events();
-    emit(
-      SensorAlarmEventsSuccess(
-        events: List.unmodifiable(_events),
-        filter: _filter,
-      ),
-    );
+
+    switch (result) {
+      case Success(response: final entities):
+        _events = entities
+            .map((entity) => SensorAlarmItemUiModel.fromEntity(entity))
+            .toList();
+        emit(
+          SensorAlarmEventsSuccess(
+            events: List.unmodifiable(_events),
+            filter: _filter,
+          ),
+        );
+      case Error(message: final errorMessage):
+        emit(SensorAlarmEventsError(errorMessage));
+    }
   }
 }

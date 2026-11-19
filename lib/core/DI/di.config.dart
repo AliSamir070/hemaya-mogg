@@ -33,6 +33,18 @@ import '../../features/camera_event_history/presentation/viewmodels/camera_event
     as _i739;
 import '../../features/camera_snapshot/presentation/viewmodels/camera_snapshot/camera_snapshot_view_model_cubit.dart'
     as _i435;
+import '../../features/sensor_alarm_events/api/sensor_alarm_events_client.dart'
+    as _i191;
+import '../../features/sensor_alarm_events/data/datasource/sensor_alarm_events_dao.dart'
+    as _i592;
+import '../../features/sensor_alarm_events/data/datasource_impl/sensor_alarm_events_api_dao_impl.dart'
+    as _i794;
+import '../../features/sensor_alarm_events/data/repo_impl/sensor_alarm_events_repo_impl.dart'
+    as _i194;
+import '../../features/sensor_alarm_events/domain/repo/sensor_alarm_events_repo.dart'
+    as _i1063;
+import '../../features/sensor_alarm_events/domain/usecase/get_sensor_alarm_events_use_case.dart'
+    as _i764;
 import '../../features/sensor_alarm_events/presentation/viewmodels/sensor_active_alarm/sensor_active_alarm_view_model_cubit.dart'
     as _i90;
 import '../../features/sensor_alarm_events/presentation/viewmodels/sensor_alarm_events/sensor_alarm_events_view_model_cubit.dart'
@@ -64,9 +76,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i90.SensorActiveAlarmViewModelCubit>(
       () => _i90.SensorActiveAlarmViewModelCubit(),
     );
-    gh.factory<_i576.SensorAlarmEventsViewModelCubit>(
-      () => _i576.SensorAlarmEventsViewModelCubit(),
-    );
     gh.factory<_i762.SensorDetailsViewModelCubit>(
       () => _i762.SensorDetailsViewModelCubit(),
     );
@@ -82,6 +91,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i186.AuthClient>(
       () => _i186.AuthClient(gh<_i267.MeteorService>()),
     );
+    gh.singleton<_i191.SensorAlarmEventsClient>(
+      () => _i191.SensorAlarmEventsClient(gh<_i267.MeteorService>()),
+    );
     gh.factory<_i753.AuthDao>(
       () => _i793.AuthApiDaoImpl(
         gh<_i186.AuthClient>(),
@@ -89,11 +101,29 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i170.AuthRepo>(() => _i279.AuthRepoImpl(gh<_i753.AuthDao>()));
+    gh.factory<_i592.SensorAlarmEventsDao>(
+      () => _i794.SensorAlarmEventsApiDaoImpl(
+        gh<_i191.SensorAlarmEventsClient>(),
+        gh<_i267.MeteorService>(),
+      ),
+    );
+    gh.factory<_i1063.SensorAlarmEventsRepo>(
+      () => _i194.SensorAlarmEventsRepoImpl(gh<_i592.SensorAlarmEventsDao>()),
+    );
+    gh.singleton<_i764.GetSensorAlarmEventsUseCase>(
+      () =>
+          _i764.GetSensorAlarmEventsUseCase(gh<_i1063.SensorAlarmEventsRepo>()),
+    );
     gh.singleton<_i391.LoginUseCase>(
       () => _i391.LoginUseCase(gh<_i170.AuthRepo>()),
     );
     gh.singleton<_i164.SignupUseCase>(
       () => _i164.SignupUseCase(gh<_i170.AuthRepo>()),
+    );
+    gh.factory<_i576.SensorAlarmEventsViewModelCubit>(
+      () => _i576.SensorAlarmEventsViewModelCubit(
+        gh<_i764.GetSensorAlarmEventsUseCase>(),
+      ),
     );
     gh.factory<_i836.SignupViewModelCubit>(
       () => _i836.SignupViewModelCubit(gh<_i164.SignupUseCase>()),
